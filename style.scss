@@ -15,6 +15,7 @@ body {
 	font-size: 15px;
 	font-family: 'Spartan', sans-serif;
 	background-color: $light-cyan-bg;
+	font-weight: 500;
 }
 .bg-block {
 	height: 7rem;
@@ -22,6 +23,109 @@ body {
 }
 .content-block {
 	padding: 3rem;
+}
+.item {
+	border-radius: 3px;
+	margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: white;
+	padding: 1.5rem;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+.item-main {
+	display: flex;
+	align-items: center;
+}
+.item-image {
+	margin-right: 1rem;
+}
+.item-info {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+.item-info__head {
+	display: flex;
+	gap: 0.6rem;
+}
+.item-info__company {
+	color: $des-cyan;
+	font-weight: 700;
+	font-size: 1.1rem;
+}
+.item-info__chart {
+	font-weight: 700;
+	display: inline-block;
+	font-size: 0.7rem;
+	border-radius: 20px;
+	padding: 0.4rem 0.6rem 0.3rem 0.6rem;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+}
+.chart-new {
+	background-color: $des-cyan;
+	color: white;
+}
+.chart-feat {
+	background-color: black;
+	color: white;
+}
+.item-prof {
+	font-size: 1.2rem;
+	font-weight: 700;
+	cursor: pointer;
+	transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out;
+	-moz-transition: color 0.2s ease-in-out;
+	-ms-transition: color 0.2s ease-in-out;
+	-o-transition: color 0.2s ease-in-out;
+}
+.item-prof:hover {
+	color: $des-cyan;
+}
+.item-info__add {
+	color: $dark-cyan;
+	font-size: 0.8rem;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.fa-circle {
+	font-size: 0.35rem;
+}
+.item-filter {
+	justify-self: flex-end;
+}
+.item-filter__item {
+	border-radius: 3px;
+	cursor: pointer;
+	font-size: 0.9rem;
+	font-weight: 700;
+	background: $light-cyan-ft;
+	color: $des-cyan;
+	padding: 0.4rem 0.5rem;
+	margin-left: 0.7rem;
+	transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+	-moz-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+	-ms-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+	-o-transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+}
+.item-filter__item:hover {
+	color: white;
+	background: $des-cyan;
 }
 
 @media (max-width: 767px) {
