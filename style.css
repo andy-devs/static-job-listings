@@ -41,6 +41,7 @@ body {
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
+  gap: 1rem;
 }
 
 .filter-block__item {
@@ -242,8 +243,13 @@ body {
 }
 
 @media (max-width: 767px) {
-  .content-block {
-    padding: 3rem 1rem 0rem 1rem;
+  .content {
+    padding: 1rem;
+    padding-top: 2rem;
+  }
+  .filter-block {
+    padding: 1.5rem 1.5rem;
+    top: -2rem;
   }
   .bg-block {
     height: 7rem;
