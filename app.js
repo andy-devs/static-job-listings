@@ -11,6 +11,9 @@ fetch('./data.json')
 			img.classList.add('item-image');
 			img.src = `${i.logo}`;
 
+			let itemMain = document.createElement('div');
+			itemMain.classList.add('item-main');
+
 			let itemInfo = document.createElement('div');
 			itemInfo.classList.add('item-info');
 
@@ -19,27 +22,26 @@ fetch('./data.json')
 
 			let itemInfoCompany = document.createElement('span');
 			itemInfoCompany.classList.add('item-info__company');
-			itemInfoHead.textContent = `${i.company}`;
+			itemInfoCompany.textContent = `${i.company}`;
+			itemInfoHead.appendChild(itemInfoCompany);
 
-			if (i.new) {
+			if (i.new == true) {
 				let itemInfoChartNew = document.createElement('div');
-				itemInfoChartNew.classList.add(
-					'content-block__item-info__chart'
-				);
+				itemInfoChartNew.classList.add('item-info__chart');
 				itemInfoChartNew.classList.add('chart-new');
+				itemInfoChartNew.textContent = 'NEW!';
 				itemInfoHead.appendChild(itemInfoChartNew);
 			}
 
-			if (i.featured) {
+			if (i.featured == true) {
 				let itemInfoChartFeatured = document.createElement('div');
-				itemInfoChartFeatured.classList.add(
-					'content-block__item-info__chart'
-				);
-				itemInfoChartFeatured.classList.add('chart-featured');
+				itemInfoChartFeatured.classList.add('item-info__chart');
+				itemInfoChartFeatured.classList.add('chart-feat');
+				itemInfoChartFeatured.textContent = 'FEATURED';
 				itemInfoHead.appendChild(itemInfoChartFeatured);
 			}
 			let itemProf = document.createElement('p');
-			itemProf.classList.add('info-prof');
+			itemProf.classList.add('item-prof');
 			itemProf.textContent = `${i.position}`;
 
 			let itemInfoAdd = document.createElement('p');
@@ -54,24 +56,26 @@ fetch('./data.json')
             <span class="content-block__item-info__add-item">${i.location}</span>`;
 			let itemFilter = document.createElement('div');
 			itemFilter.classList.add('item-filter');
-			i['languages'].map((value) =>
-				itemFilter.appendChild(
-					`<span class="content-block__item-filter__item">${value}</span>`
-				)
-			);
-			i['tools'].map((value) =>
-				itemFilter.appendChild(
-					`<span class="content-block__item-filter__item">${value}</span>`
-				)
-			);
+			i['languages'].map((value) => {
+				let itemFilterElem = document.createElement('span');
+				itemFilterElem.classList.add('item-filter__item');
+				itemFilterElem.textContent = `${value}`;
+				itemFilter.appendChild(itemFilterElem);
+			});
+			i['tools'].map((value) => {
+				let itemFilterElem = document.createElement('span');
+				itemFilterElem.classList.add('item-filter__item');
+				itemFilterElem.textContent = `${value}`;
+				itemFilter.appendChild(itemFilterElem);
+			});
 
-			item.appendChild(img);
-			item.appendChild(itemInfo);
+			item.appendChild(itemMain);
+			itemMain.appendChild(img);
+			itemMain.appendChild(itemInfo);
 			item.appendChild(itemFilter);
 			itemInfo.appendChild(itemInfoHead);
 			itemInfo.appendChild(itemProf);
 			itemInfo.appendChild(itemInfoAdd);
-			itemInfoHead.appendChild(itemInfoCompany);
 
 			contentBlock.appendChild(item);
 		}
