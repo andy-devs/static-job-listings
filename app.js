@@ -14,7 +14,10 @@ function renderItems(data, arr) {
 		for (let i of arr) {
 			filteredData = data.filter(
 				(value) =>
-					value['languages'].includes(i) || value['tools'].includes(i)
+					value['role'].includes(i) ||
+					value['level'].includes(i) ||
+					value['languages'].includes(i) ||
+					value['tools'].includes(i)
 			);
 		}
 		console.log(filteredData);
@@ -75,15 +78,26 @@ function renderItems(data, arr) {
 			<span class="content-block__item-info__add-item">${i.location}</span>`;
 			let itemFilter = document.createElement('div');
 			itemFilter.classList.add('item-filter');
+			let itemFilterElem;
+			itemFilterElem = document.createElement('span');
+			itemFilterElem.classList.add('item-filter__item');
+			itemFilterElem.textContent = `${i['role']}`;
+			itemFilterElem.onclick = filterItems;
+			itemFilter.appendChild(itemFilterElem);
+			itemFilterElem = document.createElement('span');
+			itemFilterElem.classList.add('item-filter__item');
+			itemFilterElem.textContent = `${i['level']}`;
+			itemFilterElem.onclick = filterItems;
+			itemFilter.appendChild(itemFilterElem);
 			i['languages'].map((value) => {
-				let itemFilterElem = document.createElement('span');
+				itemFilterElem = document.createElement('span');
 				itemFilterElem.classList.add('item-filter__item');
 				itemFilterElem.textContent = `${value}`;
 				itemFilterElem.onclick = filterItems;
 				itemFilter.appendChild(itemFilterElem);
 			});
 			i['tools'].map((value) => {
-				let itemFilterElem = document.createElement('span');
+				itemFilterElem = document.createElement('span');
 				itemFilterElem.classList.add('item-filter__item');
 				itemFilterElem.textContent = `${value}`;
 				itemFilterElem.onclick = filterItems;
