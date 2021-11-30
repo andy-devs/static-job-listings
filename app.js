@@ -5,21 +5,34 @@ const content = document.querySelector('.content');
 let dataItem;
 let filterArr = [];
 
-const isEqual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
-
 function renderItems(data, arr) {
 	contentBlock.innerHTML = '';
 	if (arr) {
 		let filteredData;
-		for (let i of arr) {
-			filteredData = data.filter(
-				(value) =>
-					value['role'].includes(i) ||
-					value['level'].includes(i) ||
-					value['languages'].includes(i) ||
-					value['tools'].includes(i)
+		let allFilterItems = [];
+
+		filteredData = data.filter((value) => {
+			let check = true;
+			allFilterItems.push(
+				value['role'],
+				value['level'],
+				...value['languages'],
+				...value['tools']
 			);
-		}
+			for (let i of arr) {
+				console.log(allFilterItems, i);
+				if (!allFilterItems.includes(i)) {
+					console.log(check);
+					check = false;
+				}
+			}
+			if (check == true) {
+				allFilterItems = [];
+				return value;
+			}
+			allFilterItems = [];
+		});
+
 		console.log(filteredData);
 		contentBlock.innerHTML = '';
 		renderItems(filteredData);
