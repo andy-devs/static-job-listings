@@ -20,9 +20,7 @@ function renderItems(data, arr) {
 				...value['tools']
 			);
 			for (let i of arr) {
-				console.log(allFilterItems, i);
 				if (!allFilterItems.includes(i)) {
-					console.log(check);
 					check = false;
 				}
 			}
@@ -33,7 +31,6 @@ function renderItems(data, arr) {
 			allFilterItems = [];
 		});
 
-		console.log(filteredData);
 		contentBlock.innerHTML = '';
 		renderItems(filteredData);
 	} else {
@@ -180,5 +177,28 @@ function filterItems(e) {
 		content.style.paddingTop = '0rem';
 		filterBlock.style.display = 'flex';
 		renderItems(dataItem, filterArr);
+	} else {
+		contentBlock.innerHTML = '';
+		console.log(e.target.textContent);
+		if (filterArr.includes(e.target.textContent)) {
+			filterArr = filterArr.filter(
+				(value) => value != e.target.textContent
+			);
+		}
+		for (let i of filterBlock.children) {
+			console.log(filterBlock.children);
+			console.log(i.firstChild.textContent);
+
+			if (i.firstChild.textContent == e.target.textContent) {
+				filterBlock.removeChild(i);
+			}
+		}
+		if (filterArr == 0) {
+			content.style.paddingTop = '2rem';
+			filterBlock.style.display = 'none';
+			renderItems(dataItem);
+		} else {
+			renderItems(dataItem, filterArr);
+		}
 	}
 }
