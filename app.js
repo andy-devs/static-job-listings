@@ -24,7 +24,7 @@ function renderItems(data, arr) {
 					check = false;
 				}
 			}
-			if (check == true) {
+			if (check === true) {
 				allFilterItems = [];
 				return value;
 			}
